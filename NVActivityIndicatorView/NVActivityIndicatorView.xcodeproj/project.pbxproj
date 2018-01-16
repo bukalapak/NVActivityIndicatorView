@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		106B7FA7200DB08F00BF5D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106B7FA6200DB08F00BF5D9C /* Images.xcassets */; };
 		106B7FA9200DB1DD00BF5D9C /* NVActivityIndicatorAnimationBLAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B7FA8200DB1DD00BF5D9C /* NVActivityIndicatorAnimationBLAnimation.swift */; };
 		106B7FAA200DBAC700BF5D9C /* NVActivityIndicatorAnimationBLAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B7FA8200DB1DD00BF5D9C /* NVActivityIndicatorAnimationBLAnimation.swift */; };
+		106B802C200DCA6800BF5D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106B802B200DCA6800BF5D9C /* Images.xcassets */; };
+		106B802D200DCA6800BF5D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106B802B200DCA6800BF5D9C /* Images.xcassets */; };
 		1F0326C51F0D257700BF3358 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0326A01F0D257600BF3358 /* NVActivityIndicatorAnimationAudioEqualizer.swift */; };
 		1F0326C61F0D257700BF3358 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0326A11F0D257600BF3358 /* NVActivityIndicatorAnimationBallBeat.swift */; };
 		1F0326C71F0D257700BF3358 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0326A21F0D257600BF3358 /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
@@ -89,8 +90,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		106B7FA6200DB08F00BF5D9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		106B7FA8200DB1DD00BF5D9C /* NVActivityIndicatorAnimationBLAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBLAnimation.swift; sourceTree = "<group>"; };
+		106B802B200DCA6800BF5D9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F0326941F0D24BE00BF3358 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVActivityIndicatorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F0326A01F0D257600BF3358 /* NVActivityIndicatorAnimationAudioEqualizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationAudioEqualizer.swift; sourceTree = "<group>"; };
 		1F0326A11F0D257600BF3358 /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
@@ -176,13 +177,13 @@
 		1F0326961F0D24BE00BF3358 /* NVActivityIndicatorView */ = {
 			isa = PBXGroup;
 			children = (
+				106B802B200DCA6800BF5D9C /* Images.xcassets */,
 				1F0326C01F0D257700BF3358 /* NVActivityIndicatorAnimationDelegate.swift */,
 				1F0326C21F0D257700BF3358 /* NVActivityIndicatorShape.swift */,
 				1F0326C31F0D257700BF3358 /* NVActivityIndicatorView.swift */,
 				1F03269F1F0D257600BF3358 /* Animations */,
 				1F0326EA1F0D259300BF3358 /* Supporting Files */,
 				1F88C9CB1F10CD7300869231 /* Presenter */,
-				106B7FA6200DB08F00BF5D9C /* Images.xcassets */,
 			);
 			path = NVActivityIndicatorView;
 			sourceTree = "<group>";
@@ -358,7 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				106B7FA7200DB08F00BF5D9C /* Images.xcassets in Resources */,
+				106B802C200DCA6800BF5D9C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106B802D200DCA6800BF5D9C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

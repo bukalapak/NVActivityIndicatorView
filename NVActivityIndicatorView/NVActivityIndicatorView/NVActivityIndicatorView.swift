@@ -348,6 +348,15 @@ public enum NVActivityIndicatorType: Int {
 
 /// Activity indicator view with nice animations
 public final class NVActivityIndicatorView: UIView {
+    /// Default is view blocking screen. Default value is true.
+    public static var DEFAULT_IS_BLOCKING_SCREEN: Bool = true
+    
+    /// Default is view closeable. Default value is false.
+    public static var DEFAULT_ONCLOSEBLOCK: (() -> Void)? = nil
+    
+    /// Default is view closeable. Default value is false.
+    public static var DEFAULT_CLOSEABLE: Bool = false
+
     /// Default type. Default value is .BallSpinFadeLoader.
     public static var DEFAULT_TYPE: NVActivityIndicatorType = .ballSpinFadeLoader
 

@@ -12,15 +12,23 @@ class NVActivityIndicatorAnimationBLAnimation: NVActivityIndicatorAnimationDeleg
     private let imagesLayer = CALayer()
     private var images: [UIImage] = []
     var indexOfImages = 2
-    
+    var bundle: Bundle {
+        return Bundle(for: type(of: self))
+    }
+
     func loadImages() {
+
         var images: [UIImage] = []
         for i in 2..<7 {
-            let image = UIImage(named: "ic_loader_\(i)")!
+            let image = UIImage(named: "ic_loader_\(i)",
+                                in: bundle,
+                                compatibleWith: nil)!
             images.append(image)
             
         }
-        let image = UIImage(named: "ic_loader_1")!
+        let image = UIImage(named: "ic_loader_1",
+                            in: bundle,
+                            compatibleWith: nil)!
         images.append(image)
         
         self.images = images
@@ -41,7 +49,9 @@ class NVActivityIndicatorAnimationBLAnimation: NVActivityIndicatorAnimationDeleg
         backgroundLayer.cornerRadius = 20
         
         let imageSize: CGFloat = 32
-        let myImage = UIImage(named: "ic_loader_2")?.cgImage
+        let myImage = UIImage(named: "ic_loader_2",
+                              in: bundle,
+                              compatibleWith: nil)!.cgImage
         imagesLayer.frame = CGRect(
             x: (layer.bounds.size.width / 2) - (imageSize / 2),
             y: (layer.bounds.size.height / 2) - (imageSize * 5 / 6),

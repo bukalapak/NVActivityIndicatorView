@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "https://github.com/ninjaprox/NVActivityIndicatorView.git", :tag => s.version }
-
+  s.resources    = "NVActivityIndicatorView/NVActivityIndicatorView/Images.xcassets"
   s.subspec "Presenter" do |ps|
     ps.source_files = "NVActivityIndicatorView/NVActivityIndicatorView/**/*.swift"
   end

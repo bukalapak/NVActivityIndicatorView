@@ -41,7 +41,7 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
         let cellWidth = Int(self.view.frame.width / CGFloat(cols))
         let cellHeight = Int(self.view.frame.height / CGFloat(rows))
 
-        (NVActivityIndicatorType.ballPulse.rawValue ... NVActivityIndicatorType.blAnimation.rawValue).forEach {
+        (NVActivityIndicatorType.ballPulse.rawValue ... NVActivityIndicatorType.circleStrokeSpin.rawValue).forEach {
             let x = ($0 - 1) % cols * cellWidth
             let y = ($0 - 1) / cols * cellHeight
             let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
@@ -74,6 +74,14 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
 
     @objc func buttonTapped(_ sender: UIButton) {
         let size = CGSize(width: 30, height: 30)
+        NVActivityIndicatorView.DEFAULT_TYPE = .ballPulseSync
+        NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 40, height: 40)
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 0
+        NVActivityIndicatorView.DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD = 0
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE_FONT = UIFont.systemFont(ofSize: 12)
+        NVActivityIndicatorView.DEFAULT_IS_BLOCKING_SCREEN = true
+        NVActivityIndicatorView.DEFAULT_CLOSEABLE = true
+        NVActivityIndicatorView.DEFAULT_ONCLOSEBLOCK = nil
 
         let activityData = ActivityData(size: CGSize(width: 96, height: 92),
                                         message: "Harap Tunggu",
@@ -81,8 +89,9 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
                                         type: .blAnimation,
                                         color: .black,
                                         padding: nil,
-                                        displayTimeThreshold: nil,
-                                        minimumDisplayTime: nil)
+                                        displayTimeThreshold: 0,
+                                        minimumDisplayTime: nil,
+                                        isCloseable: false)
 
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
 
@@ -90,7 +99,7 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
             NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
         }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10) {
             self.stopAnimating()
         }
     }
