@@ -41,7 +41,7 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
         let cellWidth = Int(self.view.frame.width / CGFloat(cols))
         let cellHeight = Int(self.view.frame.height / CGFloat(rows))
 
-        (NVActivityIndicatorType.ballPulse.rawValue ... NVActivityIndicatorType.circleStrokeSpin.rawValue).forEach {
+        (NVActivityIndicatorType.ballPulse.rawValue ... NVActivityIndicatorType.blAnimation.rawValue).forEach {
             let x = ($0 - 1) % cols * cellWidth
             let y = ($0 - 1) / cols * cellHeight
             let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
@@ -75,7 +75,16 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
     @objc func buttonTapped(_ sender: UIButton) {
         let size = CGSize(width: 30, height: 30)
 
-        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: sender.tag)!)
+        let activityData = ActivityData(size: CGSize(width: 96, height: 92),
+                                        message: "Harap Tunggu",
+                                        messageFont: nil,
+                                        type: .blAnimation,
+                                        color: .black,
+                                        padding: nil,
+                                        displayTimeThreshold: nil,
+                                        minimumDisplayTime: nil)
+
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
