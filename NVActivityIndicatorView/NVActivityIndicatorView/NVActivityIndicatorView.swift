@@ -263,6 +263,12 @@ public enum NVActivityIndicatorType: Int {
      - returns: Instance of NVActivityIndicatorAnimationCircleStrokeSpin.
      */
     case circleStrokeSpin
+    /**
+     BLAnimation.
+     
+     - returns: Instance of NVActivityIndicatorAnimationBLAnimation.
+     */
+    case blAnimation
 
     static let allTypes = (blank.rawValue ... circleStrokeSpin.rawValue).map { NVActivityIndicatorType(rawValue: $0)! }
 
@@ -334,12 +340,23 @@ public enum NVActivityIndicatorType: Int {
             return NVActivityIndicatorAnimationAudioEqualizer()
         case .circleStrokeSpin:
             return NVActivityIndicatorAnimationCircleStrokeSpin()
+        case .blAnimation:
+            return NVActivityIndicatorAnimationBLAnimation()
         }
     }
 }
 
 /// Activity indicator view with nice animations
 public final class NVActivityIndicatorView: UIView {
+    /// Default is view blocking screen. Default value is true.
+    public static var DEFAULT_IS_BLOCKING_SCREEN: Bool = true
+    
+    /// Default is view closeable. Default value is false.
+    public static var DEFAULT_ONCLOSEBLOCK: (() -> Void)? = nil
+    
+    /// Default is view closeable. Default value is false.
+    public static var DEFAULT_CLOSEABLE: Bool = false
+
     /// Default type. Default value is .BallSpinFadeLoader.
     public static var DEFAULT_TYPE: NVActivityIndicatorType = .ballSpinFadeLoader
 

@@ -74,14 +74,32 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
 
     @objc func buttonTapped(_ sender: UIButton) {
         let size = CGSize(width: 30, height: 30)
+        NVActivityIndicatorView.DEFAULT_TYPE = .ballPulseSync
+        NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 40, height: 40)
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 0
+        NVActivityIndicatorView.DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD = 0
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE_FONT = UIFont.systemFont(ofSize: 12)
+        NVActivityIndicatorView.DEFAULT_IS_BLOCKING_SCREEN = true
+        NVActivityIndicatorView.DEFAULT_CLOSEABLE = true
+        NVActivityIndicatorView.DEFAULT_ONCLOSEBLOCK = nil
 
-        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: sender.tag)!)
+        let activityData = ActivityData(size: CGSize(width: 96, height: 92),
+                                        message: "Harap Tunggu",
+                                        messageFont: nil,
+                                        type: .blAnimation,
+                                        color: .black,
+                                        padding: nil,
+                                        displayTimeThreshold: 0,
+                                        minimumDisplayTime: nil,
+                                        isCloseable: false)
+
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
         }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10) {
             self.stopAnimating()
         }
     }
