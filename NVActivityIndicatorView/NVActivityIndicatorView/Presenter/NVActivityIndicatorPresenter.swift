@@ -215,8 +215,7 @@ public final class NVActivityIndicatorPresenter {
         containerView.backgroundColor = activityData.backgroundColor
         containerView.restorationIdentifier = restorationIdentifier
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        containerView.isUserInteractionEnabled = false
+        containerView.isUserInteractionEnabled = true
         
         let activityIndicatorView = NVActivityIndicatorView(
             frame: CGRect(x: 0, y: 0, width: activityData.size.width, height: activityData.size.height),
@@ -226,7 +225,6 @@ public final class NVActivityIndicatorPresenter {
         
         activityIndicatorView.startAnimating()
         if (activityData.isCloseable) {
-            containerView.isUserInteractionEnabled = true
             containerView.addGestureRecognizer(
                 UITapGestureRecognizer(target: self, action: #selector(forceStopAnimating))
             )
