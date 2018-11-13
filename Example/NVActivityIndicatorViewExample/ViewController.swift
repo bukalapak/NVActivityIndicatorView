@@ -65,15 +65,20 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
 
             let button: UIButton = UIButton(frame: frame)
             button.tag = $0
+            #if swift(>=4.2)
+            button.addTarget(self,
+                             action: #selector(buttonTapped(_:)),
+                             for: .touchUpInside)
+            #else
             button.addTarget(self,
                              action: #selector(buttonTapped(_:)),
                              for: UIControlEvents.touchUpInside)
+            #endif
             self.view.addSubview(button)
         }
     }
 
     @objc func buttonTapped(_ sender: UIButton) {
-        let size = CGSize(width: 30, height: 30)
         NVActivityIndicatorView.DEFAULT_TYPE = .ballPulseSync
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 40, height: 40)
         NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 0
@@ -93,14 +98,14 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
                                         minimumDisplayTime: nil,
                                         isCloseable: false)
 
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
         }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10) {
-            self.stopAnimating()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.stopAnimating(nil)
         }
     }
 }
