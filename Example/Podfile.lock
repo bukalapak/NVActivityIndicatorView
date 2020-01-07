@@ -11,8 +11,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NVActivityIndicatorView: d5e6e7c3f801466fb91a048c5d7aa8eb7b77fadb
+  NVActivityIndicatorView: 9430d51a228cdb32bfdad6666d5fa0e25e1873ae
 
 PODFILE CHECKSUM: e5d164996aa6d71a0eda53503111c16d861ecbc6
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

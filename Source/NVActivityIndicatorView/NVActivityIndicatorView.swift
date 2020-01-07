@@ -277,8 +277,6 @@ public enum NVActivityIndicatorType: CaseIterable {
      */
     case blAnimation
 
-    static let allTypes = (blank.rawValue ... circleStrokeSpin.rawValue).map { NVActivityIndicatorType(rawValue: $0)! }
-
     // swiftlint:disable:next cyclomatic_complexity function_body_length
     func animation() -> NVActivityIndicatorAnimationDelegate {
         switch self {
