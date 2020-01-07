@@ -49,6 +49,7 @@ import UIKit
  - BallScaleMultiple:       BallScaleMultiple animation.
  - BallPulseSync:           BallPulseSync animation.
  - BallBeat:                BallBeat animation.
+ - BallDoubleBounce:        BallDoubleBounce animation.
  - LineScalePulseOut:       LineScalePulseOut animation.
  - LineScalePulseOutRapid:  LineScalePulseOutRapid animation.
  - BallScaleRipple:         BallScaleRipple animation.
@@ -64,7 +65,7 @@ import UIKit
  - AudioEqualizer:          AudioEqualizer animation.
  - CircleStrokeSpin:        CircleStrokeSpin animation.
  */
-public enum NVActivityIndicatorType: Int {
+public enum NVActivityIndicatorType: CaseIterable {
     /**
      Blank.
 
@@ -179,6 +180,12 @@ public enum NVActivityIndicatorType: Int {
      - returns: Instance of NVActivityIndicatorAnimationBallBeat.
      */
     case ballBeat
+    /**
+     BallDoubleBounce.
+
+     - returns: Instance of NVActivityIndicatorAnimationBallDoubleBounce.
+     */
+    case ballDoubleBounce
     /**
      LineScalePulseOut.
 
@@ -313,6 +320,8 @@ public enum NVActivityIndicatorType: Int {
             return NVActivityIndicatorAnimationBallPulseSync()
         case .ballBeat:
             return NVActivityIndicatorAnimationBallBeat()
+        case .ballDoubleBounce:
+            return NVActivityIndicatorAnimationBallDoubleBounce()
         case .lineScalePulseOut:
             return NVActivityIndicatorAnimationLineScalePulseOut()
         case .lineScalePulseOutRapid:
@@ -358,6 +367,7 @@ public typealias FadeOutAnimation = (UIView, @escaping () -> Void) -> Void
 // swiftlint:disable file_length
 /// Activity indicator view with nice animations
 public final class NVActivityIndicatorView: UIView {
+    // swiftlint:disable identifier_name
     /// Default is view blocking screen. Default value is true.
     public static var DEFAULT_IS_BLOCKING_SCREEN: Bool = true
     
@@ -448,7 +458,7 @@ public final class NVActivityIndicatorView: UIView {
     @IBInspectable public var padding: CGFloat = NVActivityIndicatorView.DEFAULT_PADDING
 
     /// Current status of animation, read-only.
-    @available(*, deprecated: 3.1)
+    @available(*, deprecated)
     public var animating: Bool { return isAnimating }
 
     /// Current status of animation, read-only.
@@ -515,6 +525,9 @@ public final class NVActivityIndicatorView: UIView {
      Start animating.
      */
     public final func startAnimating() {
+        guard !isAnimating else {
+            return
+        }
         isHidden = false
         isAnimating = true
         layer.speed = 1
@@ -525,6 +538,9 @@ public final class NVActivityIndicatorView: UIView {
      Stop animating.
      */
     public final func stopAnimating() {
+        guard isAnimating else {
+            return
+        }
         isHidden = true
         isAnimating = false
         layer.sublayers?.removeAll()
@@ -534,7 +550,7 @@ public final class NVActivityIndicatorView: UIView {
 
     // swiftlint:disable:next identifier_name
     func _setTypeName(_ typeName: String) {
-        for item in NVActivityIndicatorType.allTypes {
+        for item in NVActivityIndicatorType.allCases {
             if String(describing: item).caseInsensitiveCompare(typeName) == ComparisonResult.orderedSame {
                 type = item
                 break
