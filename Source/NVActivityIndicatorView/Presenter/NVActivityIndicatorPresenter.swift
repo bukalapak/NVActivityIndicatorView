@@ -268,6 +268,7 @@ public final class NVActivityIndicatorPresenter {
     
     @objc public final func forceStopAnimating() {
         hide(nil)
+        state = .stopped
     }
     
     /// Set message displayed under activity indicator view.
